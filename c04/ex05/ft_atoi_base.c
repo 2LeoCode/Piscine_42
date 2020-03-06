@@ -29,34 +29,35 @@ int     ft_checkbase(char *str)
     return (i);
 }
 
-void    ft_recursive_base(char *str, char *base, long size, long *nb)
+int     ft_check_pos(char c, char *base)
 {
     int i;
 
     i = 0;
     while (base[i])
     {
-        if (*str == base[i])
+        if (c == base[i])
             break ;
         i++;
     }
-    if (!base[i])
-        return ;
-    *nb *= size;
-    *nb += i;
-    str++;
-    ft_recursive_base(str, base, size, nb);
+    return (i);
+}
+
+int     ft_recurs_base(char *str, char *base, long size)
+{
+    if (ft_check_pos(*str, base) == size)
+        return (0);
+    str--;
+    return (ft_recurs_base(str, base, size) * size + ft_check_pos(str[1], base));
 }
 
 int     ft_atoi_base(char *str, char *base)
 {
     long base_size;
-    long nb;
     long neg;
 
     base_size = (long)ft_checkbase(base);
     neg = 1;
-    nb = 0;
     if (base_size < 2)
         return (0);
     while (ft_isspace(*str))
@@ -67,7 +68,7 @@ int     ft_atoi_base(char *str, char *base)
             neg *= -1;
         str++;
     }
-    ft_recursive_base(str, base, base_size, &nb);
-    nb *= neg;
-    return ((int)nb);
+    while (ft_check_pos(str[1], base) != base_size)
+        str++;
+    return ((long)ft_recurs_base(str, base, base_size) * neg);
 }
