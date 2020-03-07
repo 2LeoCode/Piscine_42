@@ -46,12 +46,8 @@ int     ft_puzzle(char *tab, int i0, int n, int i)
     if (i > 9)
     {
         ft_putstr(tab);
-        i = 9;
-        while (i > 1)
-        {
-            tab[i] = '/';
-            i--;
-        }
+        tab[9] = '/';
+        i = 8;
         return (n + ft_puzzle(tab, i0, n, i));
     }
     tab[i]++;
