@@ -72,5 +72,5 @@ int     ft_atoi_base(char *str, char *base)
     while (ft_pos(str[1], base) != base_size)
         str++;
     nb = (long)ft_rbase(str, base, base_size) * neg;
-    return ((long)ft_rbase(str, base, base_size) * neg);
+    return ((int)nb);
 }
