@@ -41,14 +41,14 @@ int     ft_check(char *tab, int i)
     return (ft_check(tab, i + 1));
 }
 
-int     ft_puzzle(char *tab, int i0, int n, int i)
+int     ft_puzzle(char *tab, int i0, int i)
 {
     if (i > 9)
     {
         ft_putstr(tab);
         tab[9] = '/';
         i = 8;
-        return (n + ft_puzzle(tab, i0, n, i));
+        return (1 + ft_puzzle(tab, i0, i));
     }
     tab[i]++;
     while (!ft_check(tab, 0))
@@ -58,11 +58,11 @@ int     ft_puzzle(char *tab, int i0, int n, int i)
             if (i == 1)
                 return (0);
             tab[i] = '/';
-            return (ft_puzzle(tab, i0, n, i - 1));
+            return (ft_puzzle(tab, i0, i - 1));
         }
         tab[i]++;
     }
-    return (ft_puzzle(tab, i0, n, i + 1));
+    return (ft_puzzle(tab, i0, i + 1));
 }
 
 int     ft_ten_queens_puzzle(void)
@@ -84,7 +84,7 @@ int     ft_ten_queens_puzzle(void)
         }
         tab[j] = 0;
         tab[0] = i + 48;
-        nbposs += ft_puzzle(tab, i, 1, 1);
+        nbposs += ft_puzzle(tab, i, 1);
         i++;
     }
     return (nbposs);
