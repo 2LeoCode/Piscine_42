@@ -30,24 +30,18 @@ void    ft_printn(char *tab, int index, int n)
         ft_printn(tab, index - 1, n);
         return ;
     }
-    else
+    if (tab[index] == '9' - (n - index - 1))
     {
-        if (tab[index] == '9' - (n - index - 1))
-        {
-            ft_printn(tab, index - 1, n);
-            return ;
-        }
-        else
-        {
-            ft_print(tab, index);
-            while (index < n - 1)
-            {
-                tab[index + 1] = tab[index] + 1;
-                index++;
-            }
-            ft_printn(tab, index, n);
-        }
+        ft_printn(tab, index - 1, n);
+        return ;
     }
+    ft_print(tab, index);
+    while (index < n - 1)
+    {
+        tab[index + 1] = tab[index] + 1;
+        index++;
+    }
+    ft_printn(tab, index, n);
 }
 
 void    ft_print_combn(int n)
