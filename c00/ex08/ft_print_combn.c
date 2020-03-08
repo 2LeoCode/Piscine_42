@@ -28,11 +28,15 @@ void    ft_printn(char *tab, int index, int n)
         while (tab[index] != '9')
             ft_print(tab, index);
         ft_printn(tab, index - 1, n);
+        return ;
     }
     else
     {
         if (tab[index] == '9' - (n - index - 1))
+        {
             ft_printn(tab, index - 1, n);
+            return ;
+        }
         else
         {
             ft_print(tab, index);
