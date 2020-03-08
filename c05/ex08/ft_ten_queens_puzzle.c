@@ -1,29 +1,42 @@
 #include <unistd.h>
 
+int     ft_strcmp(char *s1, char *s2)
+{
+    int i;
+
+    i = 0;
+    while (s1[i] && s2[i] && s1[i] == s2[i])
+        i++;
+    return (s1[i] - s2[i]);
+}
+
 void    ft_putstr(char *str)
 {
     int i;
 
+    i = -4;
+    while (i)
+    {
+        if (ft_strcmp(str, "0257948136"))
+        {
+            write(1, "\n", 1);
+            break ;
+        }
+        i++;
+    }
     i = 0;
     while (str[i])
     {
         write(1, &str[i], 1);
         i++;
     }
-    write(1, "\n", 1);
-}
-
-int     ft_abs(int nb)
-{
-    if (nb < 0)
-        return (-nb);
-    else
-        return (nb);
 }
 
 int     ft_check(char *tab, int i)
 {
     int j;
+    int diff1;
+    int diff2;
 
     j = 0;
     if (!tab[i] || tab[i] == '/')
@@ -32,9 +45,11 @@ int     ft_check(char *tab, int i)
         return (0);
     while (j < i)
     {
+        diff1 = ((i - j) < 0) ? -(i - j) : (i - j);
+        diff2 = ((tab[i] - tab[j]) < 0) ? -(tab[i] - tab[j]) : (tab[i] - tab[j]);
         if (tab[j] == tab[i])
             return (0);
-        if (ft_abs(i - j) == ft_abs(tab[i] - tab[j]))
+        if (diff1 == diff2)
             return (0);
         j++;
     }
