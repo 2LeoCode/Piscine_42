@@ -7,6 +7,13 @@ int     ft_isspace(char c)
     return (0);
 }
 
+int     ft_size(int nb, int base_size)
+{
+    if (!nb)
+        return (0);
+    return (1 + ft_size(nb / base_size, base_size));
+}
+
 int     ft_checkbase(char *str)
 {
     int i;
@@ -41,30 +48,4 @@ int     ft_rbase(char *str, char *base, long size)
     if (ft_pos(*str, base) == size)
         return (0);
     return (ft_rbase(str - 1, base, size) * size + ft_pos(*str, base));
-}
-
-int     ft_atoi_base(char *str, char *base)
-{
-    long base_size;
-    long neg;
-    long nb;
-
-    base_size = (long)ft_checkbase(base);
-    neg = 1;
-    if (base_size < 2)
-        return (0);
-    while (ft_isspace(*str))
-        str++;
-    while (*str == '-' || *str == '+')
-    {
-        if (*str == '-')
-            neg *= -1;
-        str++;
-    }
-    if (ft_pos(*str, base) == base_size)
-        return (0);
-    while (ft_pos(str[1], base) != base_size)
-        str++;
-    nb = (long)ft_rbase(str, base, base_size) * neg;
-    return ((int)nb);
 }
