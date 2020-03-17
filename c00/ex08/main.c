@@ -10,8 +10,8 @@ int     main(void)
     while (i < 10)
     {
         ft_print_combn(i);
-        printf("\n\n################################\n\n");
         i++;
     }
+    printf("<<");
     return (0);
 }

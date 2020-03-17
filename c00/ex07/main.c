@@ -1,19 +1,16 @@
-#include <limits.h>
-#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 void    ft_putnbr(int nb);
 
-int     main(void)
+int     main(int argc, char **argv)
 {
-    ft_putnbr(42);
-    write(1, "\n", 1);
-    ft_putnbr(-42);
-    write(1, "\n", 1);
-    ft_putnbr(0);
-    write(1, "\n", 1);
-    ft_putnbr(INT_MAX);
-    write(1, "\n", 1);
-    ft_putnbr(INT_MIN);
-    write(1, "\n", 1);
+    if (argc != 2)
+    {
+        printf("Usage ./a.out \"number\"");
+        return (0);
+    }
+    ft_putnbr(atoi(argv[1]));
+    printf("<<");
     return (0);
 }
