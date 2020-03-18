@@ -4,7 +4,6 @@ gcc -Wall -Wextra -Werror main.c ft_putnbr.c
 alias a="./a.exe" #.out
 
 diff=0
-val=-4202
 
 function checkDiff ()
 {
