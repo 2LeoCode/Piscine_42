@@ -32,8 +32,8 @@ void    ft_display_list(t_list *list)
 {
     if (!list)
         return ;
-    printf("%s", (char*)list->data);
     ft_display_list(list->next);
+    printf("%s", (char*)list->data);
 }
 
 void    ft_list_push_back(t_list **begin_list, void *data)
@@ -72,8 +72,6 @@ int     main(int argc, char **argv)
         return (0);
     }
     test = ft_list_push_strs(argc - 1, argv + 1);
-    ft_display_list(test);
     ft_list_reverse(&test);
-    printf("\n");
     ft_display_list(test);
 }
