@@ -1,6 +1,6 @@
 #!/bin/bash
 
-gcc -Wall -Wextra -Werror main.c ft_list_push_front.c
+gcc -Wall -Wextra -Werror main.c ft_list_push_back.c
 alias a=./a.exe #.out
 
 diff=0

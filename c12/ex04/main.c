@@ -1,8 +1,8 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "ft_list.h"
 
-void    ft_list_push_front(t_list **begin_list, void *data);
+void    ft_list_push_back(t_list **begin_list, void *data);
 
 void    ft_display_list(t_list *list)
 {
@@ -25,19 +25,17 @@ void    freeAll(t_list *list)
 
 int     main(int argc, char **argv)
 {
-    int i;
-    t_list *list;
+    t_list *test;
 
-    list = NULL;
+    test = NULL;
     if (argc < 2)
     {
-        printf("Usage: ft_list_push_front 'elem1' 'elem2' 'elem3' ...");
+        printf("Usage: ft_list_push_back 'param1' 'param2' 'param3' ...");
         return (0);
     }
-    i = 0;
-    while (++i < argc)
-        ft_list_push_front(&list, argv[i]);
-    ft_display_list(list);
-    freeAll(list);
-    return (0);
+    while (--argc)
+        ft_list_push_back(&test, argv[argc]);
+    ft_display_list(test);
+    freeAll(test);
+    return(0);
 }

@@ -1,14 +1,15 @@
 #!/bin/bash
 
-gcc -Wall -Wextra -Werror main.c ft_list_push_front.c
+gcc -Wall -Wextra -Werror main.c ft_list_last.c
 alias a=./a.exe #.out
 
 diff=0
 
 function checkDiff ()
 {
-    val=$(tr -d ' ' <<< "$*")
-    ret=`a $* |sed 's/ //g'`
+    ac=$#
+    val=${!ac}
+    ret=`a $*`
 
     if [ "$ret" != "$val" ]
     then
