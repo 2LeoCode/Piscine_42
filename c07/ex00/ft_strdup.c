@@ -18,6 +18,7 @@ void    ft_strcpy(char *dest, char *src)
 char    *ft_strdup(char *str)
 {
     char *tmp;
+    
     if (!(tmp = malloc(sizeof(char) * (ft_strlen(str) + 1))))
         return (NULL);
     ft_strcpy(tmp, str);
