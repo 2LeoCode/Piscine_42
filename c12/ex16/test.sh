@@ -1,13 +1,15 @@
 #!/bin/bash
 
 alias a=./a.out
-gcc -Wall -Wextra -Werror main.c ft_list_reverse.c
+alias t=./test
+gcc -Wall -Wextra -Werror test.c -o 'test'
+gcc -Wall -Wextra -Werror main.c ft_sorted_list_insert.c ft_create_elem.c
 
 diff=0
 
 function checkDiff ()
 {
-    val=$(tr -d ' ' <<< "$*")
+    val=`t $*`
     ret=`a $*`
 
     if [ "$ret" != "$val" ]
@@ -19,11 +21,10 @@ function checkDiff ()
     fi
 }
 
-checkDiff 1 2 3 4 5 6 7 8 9
-checkDiff bonjour je suis un tres gentil citoyen
-checkDiff ta mere la pute
-checkDiff bocal le encule j
-checkDiff 0
+checkDiff 1 2 3 4 5 6 7 8 9 -i 4
+checkDiff abc bcd cde def efg fgh -i cce
+checkDiff 1 2 3 4 5 6 7 8 9 -i 0
+checkDiff 0 1 2 3 4 5 6 7 8 -i 9
 
 if [ $diff = 0 ]
 then

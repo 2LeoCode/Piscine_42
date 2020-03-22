@@ -1,7 +1,7 @@
 #!/bin/bash
 
 alias a=./a.out
-gcc -Wall -Wextra -Werror main.c ft_list_reverse.c
+gcc -Wall -Wextra -Werror main.c ft_list_reverse_fun.c
 
 diff=0
 
