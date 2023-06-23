@@ -14,16 +14,8 @@ void    ft_putstr(char *str)
 {
     int i;
 
-    i = -4;
-    while (i)
-    {
-        if (ft_strcmp(str, "0257948136"))
-        {
-            write(1, "\n", 1);
-            break ;
-        }
-        i++;
-    }
+    if (ft_strcmp(str, "0257948136"))
+        write(1, "\n", 1);
     i = 0;
     while (str[i])
     {
